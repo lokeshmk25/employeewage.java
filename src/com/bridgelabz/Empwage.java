@@ -5,17 +5,17 @@ public class Empwage {
 
                 System.out.println("Welcome to Bridgelabz EmployeeWageBuilder");
 //constant
-                int IS_PRESENT = 1;
-                int FULL_TIME=8;
+                int PART_TIME = 1;
+                int FULL_TIME=2;
                 int EMP_WAGE_PER_HR=20;
-                int empCheck = (int) Math.floor(Math.random() * 10) % 2;
                 int calcWage=0;
-                if (empCheck == IS_PRESENT) {
-                    System.out.println(" Employee is Present");
-                    calcWage = FULL_TIME * EMP_WAGE_PER_HR;
-                }
-                else
-                    System.out.println(" Employee is Absent");
+                int emphrs=0;
+                double empCheck = (int) Math.floor(Math.random() * 10) % 3;
+                if (empCheck == FULL_TIME)
+                    emphrs = 8;
+                else if (empCheck == PART_TIME )
+                    emphrs = 4;
+                calcWage = emphrs * EMP_WAGE_PER_HR;
                 System.out.println("Employeee daily wage =" +calcWage+ "RS");
             }
         }
