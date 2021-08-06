@@ -5,24 +5,37 @@ public class Empwage {
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
     public static final int EMP_WAGE_PER_HR = 20;
+    public static final int NUM_OF_WORKING_DAYS = 20;
 
     public static void main(String[] arg) {
         int calcWage = 0;
         int emphrs = 0;
-        int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-        switch (empCheck) {
-            case FULL_TIME:
-                emphrs = 8;
-                break;
-            case PART_TIME:
-                emphrs = 4;
-                break;
-            default:
-                emphrs = 0;
+        int Empwage_per_month = 0;
+
+        for (int day = 0; day < NUM_OF_WORKING_DAYS; day++) {
+            int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+            switch (empCheck) {
+                case FULL_TIME:
+                    emphrs = 8;
+                    break;
+                case PART_TIME:
+                    emphrs = 4;
+                    break;
+                default:
+                    emphrs = 0;
+            }
+            calcWage = emphrs * EMP_WAGE_PER_HR;
+            Empwage_per_month  += calcWage;
+
+            System.out.println("Employeee daily wage =" + calcWage + "rs");
         }
-        calcWage = emphrs * EMP_WAGE_PER_HR;
-        System.out.println("Employeee daily wage =" + calcWage + "rs");
+        System.out.println("Employee wage per month=" + Empwage_per_month + "rs");
     }
 }
+
+
+
+
+
 
 
