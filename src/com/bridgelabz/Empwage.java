@@ -6,13 +6,17 @@ public class Empwage {
     public static final int FULL_TIME = 2;
     public static final int EMP_WAGE_PER_HR = 20;
     public static final int NUM_OF_WORKING_DAYS = 20;
+    public static final int MAX_HRS=100;
 
     public static void main(String[] arg) {
         int calcWage = 0;
         int emphrs = 0;
         int Empwage_per_month = 0;
+        int totalemphrs =0;
+        int totalworkingdays=0;
 
-        for (int day = 0; day < NUM_OF_WORKING_DAYS; day++) {
+        while (totalemphrs <= MAX_HRS && totalworkingdays <= NUM_OF_WORKING_DAYS) {
+            totalworkingdays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
                 case FULL_TIME:
@@ -26,6 +30,7 @@ public class Empwage {
             }
             calcWage = emphrs * EMP_WAGE_PER_HR;
             Empwage_per_month  += calcWage;
+            totalemphrs += emphrs;
 
             System.out.println("Employeee daily wage =" + calcWage + "rs");
         }
