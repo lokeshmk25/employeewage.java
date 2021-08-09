@@ -6,14 +6,14 @@ public class Empwage {
     public static final int FULL_TIME = 2;
     public static final int EMP_WAGE_PER_HR = 20;
     public static final int NUM_OF_WORKING_DAYS = 20;
-    public static final int MAX_HRS=100;
+    public static final int MAX_HRS = 100;
 
-    public static void main(String[] arg) {
+    public static int computeEmpWage() {
         int calcWage = 0;
         int emphrs = 0;
         int Empwage_per_month = 0;
-        int totalemphrs =0;
-        int totalworkingdays=0;
+        int totalemphrs = 0;
+        int totalworkingdays = 0;
 
         while (totalemphrs <= MAX_HRS && totalworkingdays <= NUM_OF_WORKING_DAYS) {
             totalworkingdays++;
@@ -29,13 +29,18 @@ public class Empwage {
                     emphrs = 0;
             }
             calcWage = emphrs * EMP_WAGE_PER_HR;
-            Empwage_per_month  += calcWage;
+            Empwage_per_month += calcWage;
             totalemphrs += emphrs;
 
             System.out.println("Employeee daily wage =" + calcWage + "rs");
         }
         System.out.println("Employee wage per month=" + Empwage_per_month + "rs");
+        return calcWage;
+        }
+    public static void main(String[] args) {
+        computeEmpWage();
     }
+
 }
 
 
