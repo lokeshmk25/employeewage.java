@@ -4,18 +4,26 @@ public class Empwage {
     //constants
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
-    public static final int EMP_WAGE_PER_HR = 20;
-    public static final int NUM_OF_WORKING_DAYS = 20;
-    public static final int MAX_HRS = 100;
 
-    public static int computeEmpWage() {
-        int calcWage = 0;
-        int emphrs = 0;
-        int Empwage_per_month = 0;
-        int totalemphrs = 0;
-        int totalworkingdays = 0;
+    private final String company;
+    private final int empRatePerHr;
+    private final int numOfWorkingDays;
+    private final int maxHoursPerMonth;
 
-        while (totalemphrs <= MAX_HRS && totalworkingdays <= NUM_OF_WORKING_DAYS) {
+    public Empwage(String company, int empRatePerHr,int numOfWorkingDays,int maxHoursPerMonth){
+        this.company = company;
+        this.empRatePerHr = empRatePerHr;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this .maxHoursPerMonth = maxHoursPerMonth;
+
+    }
+
+    public static void main(String[] args) {
+
+        Empwage obj = new Empwage("Reliance",20,30,50);
+        int emphrs = 0,totalemphrs = 0,totalworkingdays=0;
+
+        while (totalemphrs <= obj.maxHoursPerMonth && totalworkingdays <= obj.numOfWorkingDays) {
             totalworkingdays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
@@ -28,20 +36,15 @@ public class Empwage {
                 default:
                     emphrs = 0;
             }
-            calcWage = emphrs * EMP_WAGE_PER_HR;
-            Empwage_per_month += calcWage;
             totalemphrs += emphrs;
+            System.out.println("Day : " +totalworkingdays+  "Emphr :" +emphrs);
+        }
+        int totalEmpWage = totalemphrs * obj.empRatePerHr;
+        System.out.println("Total EmpWage for Company :" +obj.company+ "is:" +totalEmpWage);
+        }
 
-            System.out.println("Employeee daily wage =" + calcWage + "rs");
-        }
-        System.out.println("Employee wage per month=" + Empwage_per_month + "rs");
-        return calcWage;
-        }
-    public static void main(String[] args) {
-        computeEmpWage();
     }
 
-}
 
 
 
