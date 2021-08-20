@@ -5,21 +5,9 @@ public class Empwage {
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
 
-    private final String company;
-    private final int empRatePerHr;
-    private final int numOfWorkingDays;
-    private final int maxHoursPerMonth;
-    private int totalEmpWage;
 
-    public Empwage(String company, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth) {
-        this.company = company;
-        this.empRatePerHr = empRatePerHr;
-        this.numOfWorkingDays = numOfWorkingDays;
-        this.maxHoursPerMonth = maxHoursPerMonth;
+    public static int Empwage(String company, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth) {
 
-    }
-
-    public void ComputeEmpWage() {
         int emphrs = 0, totalemphrs = 0, totalworkingdays = 0;
 
         while (totalemphrs <= maxHoursPerMonth && totalworkingdays <= numOfWorkingDays) {
@@ -38,22 +26,13 @@ public class Empwage {
             totalemphrs += emphrs;
             System.out.println("Day : " + totalworkingdays + "Emphr :" + emphrs);
         }
-        totalEmpWage = totalemphrs * empRatePerHr;
+        int totalEmpWage = totalemphrs * empRatePerHr;
+        System.out.println("Total Empwage for company:" +company+ "is:" +totalEmpWage);
+        return totalEmpWage;
     }
-
-    @Override
-    public String toString() {
-        return "Total EmpWage for company :" + company + "is:" + totalEmpWage;
-    }
-
-
     public static void main(String[] args) {
-        Empwage dmart = new Empwage("dmart", 20, 2, 10);
-        Empwage reliance = new Empwage("reliance", 10, 4, 20);
-        dmart.ComputeEmpWage();
-        System.out.println(dmart);
-        reliance.ComputeEmpWage();
-        System.out.println(reliance);
+        Empwage("dmart",20,2,10);
+        Empwage("reliance",20,2,10);
     }
 }
 
