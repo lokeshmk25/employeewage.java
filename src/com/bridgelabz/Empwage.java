@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class Empwage implements IComputeEmpwage {
+public abstract class Empwage implements IComputeEmpwage {
     //constants
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
@@ -30,7 +30,6 @@ public class Empwage implements IComputeEmpwage {
             companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
             System.out.println(companyEmpWage);
         }
-
     }
 
     public int computeEmpWage(CompanyEmpWage companyEmpWage) {
@@ -38,10 +37,16 @@ public class Empwage implements IComputeEmpwage {
     }
 
     public static void main(String[] args) {
-        IComputeEmpwage Empwage = new Empwage();
-        Empwage.addCompanyEmpWage("dmart",20,2,10);
-        Empwage.addCompanyEmpWage("reliance",10,4,20);
-        Empwage.computeEmpWage();
+        IComputeEmpwage EmpwageBuilder = new Empwage() {
+            @Override
+            public String getTotalWage(String company) {
+                return "Total Emp Wage for Company:" + company ;
+            }
+        };
+        EmpwageBuilder.addCompanyEmpWage("dmart",20,2,10);
+        EmpwageBuilder.addCompanyEmpWage("reliance",10,4,20);
+        System.out.println("Total Wage For Dmart company:" +EmpwageBuilder.getTotalWage("dmart"));
+        System.out.println("Total Wage For Dmart company:" +EmpwageBuilder.getTotalWage("relaince"));
     }
 
 }
